@@ -20,8 +20,8 @@ namespace CountingCore {
         protected virtual void LoadSphereCollider() {
             if (this.sphereCollider != null) return;
             this.sphereCollider = GetComponent<SphereCollider>();
-            this.sphereCollider.radius = 0.1f;
-            this.sphereCollider.center = new Vector3(0, 0.05f, 0);
+            /*this.sphereCollider.radius = 0.1f;*/
+            /*this.sphereCollider.center = new Vector3(0, 0.05f, 0);*/
             Debug.Log(transform.name + ": LoadSphereCollider: ", gameObject);
         }
 

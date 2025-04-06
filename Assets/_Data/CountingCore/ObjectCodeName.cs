@@ -5,13 +5,15 @@ using UnityEngine;
 namespace CountingCore {
     public enum ItemGrabCode {
         Apple = 0,      // Apple
-        Book = 1,       // Book
-        Pencil = 2,     // Pencil
-        Eraser = 3,     // Eraser
-        Ruler = 4,      // Ruler
-        Chair = 5,      // Chair
-        Clock = 6,      // Clock
-        Banana = 7,     // Banana
+        Banana = 1,     // Banana
+        Orange = 2,     // Orange
+        Strawberry = 3, // Strawberry
+        Watermelon = 4, // Watermelon
+        Cabbage = 5,    // Cabbage
+        Carrot = 6,     // Carrot
+        Cucumber = 7,   // Cucumber
+        Pepper = 8,     // Pepper
+        Tomato = 9      // Tomato
     }
 
 }
