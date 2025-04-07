@@ -36,6 +36,12 @@ namespace GrabQuiz.Animals {
 
         public virtual void Respawn() {
             Transform parent = transform.parent;
+
+            if (isImortant) {
+                this.transform.parent.gameObject.SetActive(false);
+                return;
+            }
+
             parent.gameObject.SetActive(false);
             parent.gameObject.SetActive(true);
             parent.position = initialPosition;
