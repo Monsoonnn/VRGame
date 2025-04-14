@@ -27,9 +27,13 @@ namespace GrabQuiz.Animals {
 
         [ProButton]
         public void StartRespawnCycle() {
-            if (respawnCoroutine == null) {
-                respawnCoroutine = StartCoroutine(RespawnCycleRoutine());
+            
+            if (respawnCoroutine != null) {
+                StopCoroutine(respawnCoroutine);
+                respawnCoroutine = null;
             }
+
+            respawnCoroutine = StartCoroutine(RespawnCycleRoutine());
         }
 
         [ProButton]

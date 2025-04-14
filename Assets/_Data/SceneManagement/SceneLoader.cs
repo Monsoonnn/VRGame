@@ -18,9 +18,9 @@ namespace Systems.SceneManagement {
         
         void Awake() {
             // TODO can remove
-            manager.OnSceneLoaded += sceneName => Debug.Log("Loaded: " + sceneName);
+            /*manager.OnSceneLoaded += sceneName => Debug.Log("Loaded: " + sceneName);
             manager.OnSceneUnloaded += sceneName => Debug.Log("Unloaded: " + sceneName);
-            manager.OnSceneGroupLoaded += () => Debug.Log("Scene group loaded");
+            manager.OnSceneGroupLoaded += () => Debug.Log("Scene group loaded");*/
         }
 
         async void Start() {
@@ -52,7 +52,13 @@ namespace Systems.SceneManagement {
             
             EnableLoadingCanvas();
             await manager.LoadScenes(sceneGroups[index], progress);
+
             EnableLoadingCanvas(false);
+
+            PlayerRespawn playerRespawn = GameObject.FindAnyObjectByType<PlayerRespawn>();
+            if (playerRespawn) playerRespawn.Respawn();
+
+
         }
 
         void EnableLoadingCanvas( bool enable = true ) {

@@ -12,8 +12,9 @@ public class Bootstrapper : SingletonCtrl<Bootstrapper> {
     static void Init() {
         Debug.Log("Bootstrapper...");
 #if UNITY_EDITOR
-      
-        EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(EditorBuildSettings.scenes[sceneIndex].path);
+
+        /*EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(EditorBuildSettings.scenes[sceneIndex].path);*/
+        EditorSceneManager.playModeStartScene = null;
 #endif
     }
 }
