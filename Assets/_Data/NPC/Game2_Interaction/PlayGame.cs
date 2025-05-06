@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayGame : ButtonAbstact {
 
-    public GameplayCtrl gamePlayCtrl;
+    public GameplayAnimalCtrl gamePlayCtrl;
 
     protected override void LoadComponents() {
         base.LoadComponents();
@@ -12,7 +12,7 @@ public class PlayGame : ButtonAbstact {
 
     protected virtual void LoadGameplayCtrl() { 
         if(this.gamePlayCtrl != null) return;
-        this.gamePlayCtrl = GameObject.FindAnyObjectByType<GameplayCtrl>();
+        this.gamePlayCtrl = GameObject.FindAnyObjectByType<GameplayAnimalCtrl>();
         Debug.Log(transform.name + ": LoadGameplayCtrl ", gameObject);
     }
 

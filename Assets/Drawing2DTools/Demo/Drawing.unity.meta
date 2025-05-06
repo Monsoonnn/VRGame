@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 127aa6d4b5f45234fbb6dd309396228f
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 312081
+  packageName: Drawing Tool 2D
+  packageVersion: 1.0
+  assetPath: Assets/Drawing2DTools/Demo/Drawing.unity
+  uploadId: 738419

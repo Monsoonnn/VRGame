@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1de239b7895ac8f409980d391ffdcb66
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 312081
+  packageName: Drawing Tool 2D
+  packageVersion: 1.0
+  assetPath: Assets/Drawing2DTools/Script/Brush.cs
+  uploadId: 738419

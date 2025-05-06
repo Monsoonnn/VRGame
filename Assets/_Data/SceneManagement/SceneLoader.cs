@@ -72,7 +72,7 @@ namespace Systems.SceneManagement {
 
                 
                 Vector3 forward = activeCam.transform.forward;
-                Vector3 position = activeCam.transform.position + forward * 4f;
+                Vector3 position = activeCam.transform.position + forward * 2.25f;
 
                 loadingCanvas.transform.position = position;
 

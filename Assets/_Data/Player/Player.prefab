@@ -31,7 +31,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3077921108681852746}
   - {fileID: 6747790189107768316}
   - {fileID: 3120081630475440647}
   - {fileID: 8190352316033311417}
@@ -199,7 +198,7 @@ RectTransform:
   - {fileID: 6955244502167796032}
   - {fileID: 8249928310372905525}
   - {fileID: 8837051421625185348}
-  m_Father: {fileID: 2665221582372856539}
+  m_Father: {fileID: 6747790189107768316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -425,8 +424,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cb876118ca2bb4d8bae579b804e824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraRig: {fileID: 6747790189097746994}
-  MetaHead: {fileID: 1730736464477222026}
+  centerEyeAnchor: {fileID: 0}
+  ovrManager: {fileID: 0}
+  spawnPositionName: SpawnPosition
+  rotateToMatchSpawn: 1
 --- !u!1 &7533840877146777781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2801,6 +2802,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2187219325688736317}
+    - targetCorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3077921108681852746}
     - targetCorrespondingSourceObject: {fileID: 459718, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1688956673203480698}

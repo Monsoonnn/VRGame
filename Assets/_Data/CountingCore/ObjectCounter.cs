@@ -42,6 +42,11 @@ namespace CountingCore {
 
             if (grabableObject == null) return;
 
+            if (grabableObject.isImmortal) {
+                grabableObject.Respawn();
+                return;
+            }
+
             if (grabableObject.itemGrabCode != this.countingManager.ItemGrabCode) { 
                 Debug.Log("itemGrabCode: " + grabableObject.itemGrabCode + " != " + this.countingManager.ItemGrabCode, gameObject); 
                 grabableObject.Respawn();

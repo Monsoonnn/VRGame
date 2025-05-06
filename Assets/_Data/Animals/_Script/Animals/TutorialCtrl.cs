@@ -1,14 +1,26 @@
+using com.cyborgAssets.inspectorButtonPro;
+using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace GrabQuiz.Animals {
     public class TutorialCtrl : NewMonobehavior {
+        public VoicelineCtrl voicelineCtrl;
         public PlayableDirector playableDirector;
 
         protected override void LoadComponents() {
             base.LoadComponents();
             this.LoadPlayableDirector();
+            this.LoadVoiceline();
         }
+
+        protected virtual void LoadVoiceline() { 
+            if(this.voicelineCtrl != null) return;
+            this.voicelineCtrl = GameObject.FindAnyObjectByType<VoicelineCtrl>();
+            Debug.Log(transform.name + " LoadVoiceline: " + this.voicelineCtrl);
+        }
+
 
         protected virtual void LoadPlayableDirector() { 
             if(this.playableDirector != null) return;
@@ -16,11 +28,13 @@ namespace GrabQuiz.Animals {
             Debug.Log(transform.name + " LoadPlayableDirector: " + this.playableDirector);
         }
 
-        public void StartTutorial() { 
+        [ProButton]
+        public async Task StartTutorial() {
+
+            await voicelineCtrl.PlayAnimation(VoiceType.tutorial);
+
             this.playableDirector.Play(); 
         }
-
-
 
     }
 }

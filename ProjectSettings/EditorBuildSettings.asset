@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Data/Scenes/Prototype - FindObject 1.unity
     guid: 48827605bdd7e2145b1ef942caa7e903
+  - enabled: 1
+    path: Assets/_Data/Scenes/Prototype-3.unity
+    guid: 9cd5b065604edbd4c8f8b9f542226e5a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a32b750b462bb694ebf428111864b4d3, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 367dc734b60eef94e8f58766b61d1733, type: 2}

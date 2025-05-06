@@ -16,6 +16,9 @@ namespace Systems.SceneManagement.Editor {
             if (EditorApplication.isPlaying && GUILayout.Button("Load Second Scene Group")) {
                 LoadSceneGroup(sceneLoader, 1);
             }
+            if (EditorApplication.isPlaying && GUILayout.Button("Load Second Scene Group")) {
+                LoadSceneGroup(sceneLoader, 2);
+            }
         }
 
         static async void LoadSceneGroup(SceneLoader sceneLoader, int index) {

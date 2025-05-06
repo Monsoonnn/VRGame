@@ -8,7 +8,7 @@ public class FloorReceiver : NewMonobehavior {
     public BoxCollider boxCollider;
 
     private void OnTriggerEnter( Collider other ) {
-        Debug.Log("OnTriggerEnter: " + other.gameObject.name, gameObject);
+        /*Debug.Log("OnTriggerEnter: " + other.gameObject.name, gameObject);*/
         AnimalFoodSender animalFood = other.gameObject.GetComponentInChildren<AnimalFoodSender>();
 
         if (animalFood == null) return;

@@ -1,5 +1,8 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace CountingCore {
@@ -11,6 +14,16 @@ namespace CountingCore {
         [SerializeField] protected SphereCollider sphereCollider;
         
         public ItemGrabCode itemGrabCode;
+
+        public bool isImmortal = false;
+
+        protected Vector3 initialParentPosition;
+
+        protected override void Start() {
+            base.Awake();
+            if (transform.parent != null)
+                initialParentPosition = transform.parent.position;
+        }
 
         protected override void LoadComponents() {
             base.LoadComponents();
@@ -32,8 +45,11 @@ namespace CountingCore {
             Destroy(this.transform.parent.gameObject);
         }
 
-        public virtual void Respawn() { 
-
+        public virtual void Respawn() {
+            if (isImmortal) this.transform.parent.gameObject.SetActive(false);
+            if (transform.parent != null)
+                transform.parent.position = initialParentPosition;
+            
         }
     }
 }
