@@ -7,10 +7,16 @@ using UnityEngine;
 public enum VoiceType { 
     tutorial,
     idle,
+    rightawnser,
+    wrongawnser,   
+    sugggetion,
+    afk,
+    loseDirection,
+    tutorialAnswer,
 }
 
 
-public class VoicelineCtrl : NewMonobehavior
+public class VoicelineCtrl : SingletonCtrl<VoicelineCtrl>
 {
     public VoicelineAnimation[] voicelines;
     public Animator animator;
@@ -18,6 +24,8 @@ public class VoicelineCtrl : NewMonobehavior
 
     [ProButton]
     public async Task PlayAnimation(VoiceType voiceType) {
+
+        /*Debug.Log(voiceType.ToString());*/
 
         VoicelineAnimation playingVoiceline = GetVoiceline(voiceType);
 

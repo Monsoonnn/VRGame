@@ -184,13 +184,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
-    - {fileID: 11400000, guid: b5218885838fbf243be1c0f7d8e1b235, type: 2}
+    - {fileID: 11400000, guid: 05cb4310a5d3fd84b8226a40b49398bf, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: GrabQuiz.Animals.AnimalCtrl, Assembly-CSharp
-          m_MethodName: RespawnAnimals
+        - m_Target: {fileID: 3797046}
+          m_TargetAssemblyTypeName: GrabQuiz.Animals.TutorialCtrl, Assembly-CSharp
+          m_MethodName: EndTutorial
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -241,6 +241,8 @@ PlayableDirector:
     value: {fileID: 1115496456}
   - key: {fileID: -8710427803113793446, guid: 9152ad60d49841646bae1ae56ae412ed, type: 2}
     value: {fileID: 1992205777}
+  - key: {fileID: -7539030986539147629, guid: 9152ad60d49841646bae1ae56ae412ed, type: 2}
+    value: {fileID: 3797047}
   m_ExposedReferences:
     m_References:
     - 96217b59f241269409b924548b2a2249: {fileID: 1841575695}
@@ -4641,7 +4643,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxColider: {fileID: 454269864}
   countingManager: {fileID: 2026270778}
+  suggetionCounter: {fileID: 1297420286}
   TargetCount: 3
+  isTutorial: 0
 --- !u!65 &454269864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4662,7 +4666,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.8, y: 0.1, z: 0.8}
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!4 &454269865
 Transform:
   m_ObjectHideFlags: 0
@@ -4693,7 +4697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &456642999
 Transform:
   m_ObjectHideFlags: 0
@@ -6521,7 +6525,7 @@ Transform:
   m_GameObject: {fileID: 577739504}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6577,7 +6581,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6676,8 +6680,60 @@ MonoBehaviour:
   voicelines:
   - name: Tutorial
     voiceType: 0
-    audioClip: {fileID: 8300000, guid: 91424a0227e29764b80f64ff44672f78, type: 3}
+    audioClips:
+    - {fileID: 8300000, guid: 6bde4c47c07a9ea4cb7d80e293e1c2c4, type: 3}
     animationName: talking
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: RightAnswer
+    voiceType: 2
+    audioClips:
+    - {fileID: 8300000, guid: fa0a34a7d866a264ebb514d5c5c49c2a, type: 3}
+    - {fileID: 8300000, guid: ee94b148ce6eb3e438064d3cce613b5a, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: wronganswer
+    voiceType: 3
+    audioClips:
+    - {fileID: 8300000, guid: 128dec877ad3e96449b4e74c729b5054, type: 3}
+    - {fileID: 8300000, guid: 5829a95556106d145a2d57a88b481e75, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: Suggettion
+    voiceType: 4
+    audioClips:
+    - {fileID: 8300000, guid: 0269ee9f415188b4180eede3f5bea6ec, type: 3}
+    - {fileID: 8300000, guid: d7b72898921c5ff49b2616538d0b6326, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: AFKAlert
+    voiceType: 5
+    audioClips:
+    - {fileID: 8300000, guid: 65c0783551c415b44875f31f88548888, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: LoseDirection
+    voiceType: 6
+    audioClips:
+    - {fileID: 8300000, guid: 3c72d8582a59de14480d160ecfa5eff1, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: EndTutorial
+    voiceType: 7
+    audioClips:
+    - {fileID: 8300000, guid: 605b8855b636bee4f803f6cf59a9ab02, type: 3}
+    animationName: idle
     layerIndex: 2
     crossFadeDuration: 0.2
     animationLength: 5
@@ -6960,7 +7016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxColider: {fileID: 601716787}
   countingManager: {fileID: 1917685113}
+  suggetionCounter: {fileID: 1297420286}
   TargetCount: 3
+  isTutorial: 0
 --- !u!65 &601716787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8692,7 +8750,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxColider: {fileID: 735404750}
   countingManager: {fileID: 883822021}
+  suggetionCounter: {fileID: 1297420286}
   TargetCount: 3
+  isTutorial: 0
 --- !u!65 &735404750
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8713,7 +8773,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.8, y: 0.1, z: 0.8}
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1001 &741206181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11399,7 +11459,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxColider: {fileID: 970022718}
   countingManager: {fileID: 698748591}
+  suggetionCounter: {fileID: 1297420286}
   TargetCount: 3
+  isTutorial: 0
 --- !u!65 &970022718
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15814,6 +15876,52 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: -0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1297420284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1297420285}
+  - component: {fileID: 1297420286}
+  m_Layer: 0
+  m_Name: SuggetionCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1297420285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297420284}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1342836342}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297420286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297420284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297c6ed28a6c0e84fa6339a058756d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current: 0
+  TargetIndex: 3
 --- !u!1 &1297524823
 GameObject:
   m_ObjectHideFlags: 0
@@ -15846,7 +15954,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxColider: {fileID: 1297524825}
   countingManager: {fileID: 1162851643}
+  suggetionCounter: {fileID: 1297420286}
   TargetCount: 3
+  isTutorial: 0
 --- !u!65 &1297524825
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15867,7 +15977,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.8, y: 0.1, z: 0.8}
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!4 &1297524826
 Transform:
   m_ObjectHideFlags: 0
@@ -16100,6 +16210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1297420285}
   - {fileID: 1880446004}
   - {fileID: 456642999}
   - {fileID: 883822020}
@@ -21805,8 +21916,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxColider: {fileID: 1919327434}
-  countingManager: {fileID: 1115496458}
+  countingManager: {fileID: 0}
+  suggetionCounter: {fileID: 0}
   TargetCount: 3
+  isTutorial: 1
 --- !u!65 &1919327434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21827,7 +21940,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.8, y: 0.1, z: 0.8}
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!4 &1919327435
 Transform:
   m_ObjectHideFlags: 0

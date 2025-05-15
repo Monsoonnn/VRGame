@@ -23,6 +23,12 @@ namespace DrawingSystem {
             if (gamePlayCtrl.activeDrawingObject == null) return;
 
             Debug.Log(gamePlayCtrl.CheckingAnswer());
+            if (gamePlayCtrl.CheckingAnswer()) {
+                _ = VoicelineCtrl.Instance.PlayAnimation(VoiceType.rightawnser);
+            } else { 
+                _ = VoicelineCtrl.Instance.PlayAnimation(VoiceType.wrongawnser);
+            }
+            
 
            /* gamePlayCtrl.CheckingAnswer();*/
         }

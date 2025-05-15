@@ -9,14 +9,21 @@ namespace CountingCore {
 
         [SerializeField] protected BoxCollider boxColider;
         [SerializeField] protected CountingManager countingManager;
+        [SerializeField] protected SuggetionCounter suggetionCounter;
         public int TargetCount = 3;
-
+        public bool isTutorial = false;
         protected override void LoadComponents() {
             base.LoadComponents();
             this.LoadBoxCollider();
             this.LoadCountingManager();
+            this.LoadSuggetionCounter();
         }
 
+        protected virtual void LoadSuggetionCounter() { 
+            if (this.suggetionCounter != null) return;
+            this.suggetionCounter = transform.parent.parent.GetComponentInChildren<SuggetionCounter>();
+            Debug.Log(transform.name + ": LoadSuggetionCounter: ", gameObject);
+        }
         protected virtual void LoadCountingManager() {
             if (this.countingManager != null) return;
             this.countingManager = transform.GetComponentInParent<CountingManager>();
@@ -48,12 +55,17 @@ namespace CountingCore {
             }
 
             if (grabableObject.itemGrabCode != this.countingManager.ItemGrabCode) { 
-                Debug.Log("itemGrabCode: " + grabableObject.itemGrabCode + " != " + this.countingManager.ItemGrabCode, gameObject); 
+                Debug.Log("itemGrabCode: " + grabableObject.itemGrabCode + " != " + this.countingManager.ItemGrabCode, gameObject);
+                if(!suggetionCounter.UpdateSuggetion()){
+                    _ = VoicelineCtrl.Instance.PlayAnimation(VoiceType.wrongawnser);
+                }
                 grabableObject.Respawn();
                 return; 
             }
 
             grabableObject.Checking();
+            if(isTutorial) _ = VoicelineCtrl.Instance.PlayAnimation(VoiceType.tutorialAnswer);
+            else _ = VoicelineCtrl.Instance.PlayAnimation(VoiceType.rightawnser);
             this.TargetCount--;
 
         }

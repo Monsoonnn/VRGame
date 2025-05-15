@@ -1,3 +1,4 @@
+using com.cyborgAssets.inspectorButtonPro;
 using UnityEngine;
 
 namespace GrabQuiz.Animals {
@@ -31,18 +32,18 @@ namespace GrabQuiz.Animals {
                 child.gameObject.SetActive(true);
             }
         }
-
+        [ProButton]
         public void StartGameplay() {
             this.ActivateChildren();
             this.animalsHouse.StartRespawnCycle();
         }
-
+        [ProButton]
         public void StopGameplay() {
             this.animalsHouse.StopRespawnCycle();
         }
-
+        [ProButton]
         public void StartTutorial() {
-            this.tutorialCtrl.StartTutorial();
+            _ = this.tutorialCtrl.StartTutorial();
         }
     }
 }

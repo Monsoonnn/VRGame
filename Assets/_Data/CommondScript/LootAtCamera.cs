@@ -22,7 +22,12 @@ public class LootAtCamera : NewMonobehavior
         }
     }
 
-    void Update() {
+    void LateUpdate() {
+        if (playerCamera == null) {
+            LoadCamera();
+            return;
+        }
+       
         transform.LookAt(playerCamera);
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 180, 0);
     }

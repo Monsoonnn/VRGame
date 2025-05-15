@@ -8,7 +8,7 @@ public class VoicelineAnimation{
     public string name = "New voiceline group";
     public VoiceType voiceType;
     private Animator animator;
-    public AudioClip audioClip;
+    public AudioClip[] audioClips;
     public string animationName = "talking";
     public int layerIndex = 1;
     public float crossFadeDuration = 0.2f;
@@ -35,6 +35,9 @@ public class VoicelineAnimation{
     }*/
 
     public async Task StartDialogue(AudioSource audioSource, Animator animator) {
+
+        AudioClip audioClip = audioClips[Random.Range(0, audioClips.Length)];
+
         if (animator == null) {
             Debug.LogWarning("Missing Animator !");
             this.animator = animator;

@@ -36,5 +36,10 @@ namespace GrabQuiz.Animals {
             this.playableDirector.Play(); 
         }
 
+        public void EndTutorial() {
+
+            _ = voicelineCtrl.PlayAnimation(VoiceType.tutorialAnswer);
+        }
+
     }
 }

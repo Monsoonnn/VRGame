@@ -1,3 +1,4 @@
+using CountingCore;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,10 @@ namespace GrabQuiz.Animals {
     [RequireComponent(typeof(SphereCollider))]
     public class AnimalFoodReceiver : NewMonobehavior {
         public SphereCollider sphereCollider;
+        public SuggetionCounter suggetionCounter;
         public AnimalCtrl animalCtrl;
         public Image imageEmoji;
+        public bool isTutorial = false;
         private void OnTriggerEnter( Collider other ) {
 
 
@@ -23,10 +26,16 @@ namespace GrabQuiz.Animals {
             if (animalFood.animalsCodeName != this.animalCtrl.animalsCodeName) {
                 this.SetEmoji(2);
                 StartCoroutine(ResetEmojiAfterDelay(1.5f));
+                if (!suggetionCounter.UpdateSuggetion()) {
+                    _ = VoicelineCtrl.Instance.PlayAnimation(VoiceType.wrongawnser);
+                }
                 animalFood.Respawn();
                 return;
             }
             this.SetEmoji(1);
+            if (isTutorial) _ = VoicelineCtrl.Instance.PlayAnimation(VoiceType.tutorialAnswer);
+            else _ = VoicelineCtrl.Instance.PlayAnimation(VoiceType.rightawnser);
+
             animalCtrl.SetMoving(false);
             animalFood.Checking();
 
@@ -54,6 +63,13 @@ namespace GrabQuiz.Animals {
             this.LoadSphereCollider();
             this.LoadAnimalCtrl();
             this.LoadImageEmoji();
+            this.LoadSuggetionCounter();
+        }
+
+        protected virtual void LoadSuggetionCounter() { 
+            if(this.suggetionCounter != null) return;
+            this.suggetionCounter = this.transform.parent.parent.parent.GetComponentInChildren<SuggetionCounter>();
+            Debug.Log(transform.name + " LoadSuggetionCounter: " + this.suggetionCounter);
         }
 
         protected virtual void LoadImageEmoji() { 

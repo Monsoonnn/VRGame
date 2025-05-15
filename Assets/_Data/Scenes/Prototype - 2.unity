@@ -2231,6 +2231,52 @@ Transform:
   - {fileID: 357501573}
   m_Father: {fileID: 3797045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &182389829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 182389830}
+  - component: {fileID: 182389831}
+  m_Layer: 0
+  m_Name: SuggetionCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &182389830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182389829}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1004867521}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &182389831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182389829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 297c6ed28a6c0e84fa6339a058756d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current: 0
+  TargetIndex: 3
 --- !u!1 &185174609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,8 +2323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 185174612}
-  animalCtrl: {fileID: 0}
-  imageEmoji: {fileID: 0}
+  suggetionCounter: {fileID: 182389831}
+  animalCtrl: {fileID: 167450277}
+  imageEmoji: {fileID: 204780794}
+  isTutorial: 0
 --- !u!135 &185174612
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7393,8 +7441,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 537477928}
+  suggetionCounter: {fileID: 0}
   animalCtrl: {fileID: 1035660674}
   imageEmoji: {fileID: 2087313821}
+  isTutorial: 1
 --- !u!135 &537477928
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8067,7 +8117,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8166,8 +8216,60 @@ MonoBehaviour:
   voicelines:
   - name: Tutorial
     voiceType: 0
-    audioClip: {fileID: 8300000, guid: 91424a0227e29764b80f64ff44672f78, type: 3}
+    audioClips:
+    - {fileID: 8300000, guid: 0bc337d60c32d9e44a1ef2a43faae2c6, type: 3}
     animationName: talking
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: RightAnswer
+    voiceType: 2
+    audioClips:
+    - {fileID: 8300000, guid: fa0a34a7d866a264ebb514d5c5c49c2a, type: 3}
+    - {fileID: 8300000, guid: ee94b148ce6eb3e438064d3cce613b5a, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: wronganswer
+    voiceType: 3
+    audioClips:
+    - {fileID: 8300000, guid: 128dec877ad3e96449b4e74c729b5054, type: 3}
+    - {fileID: 8300000, guid: 5829a95556106d145a2d57a88b481e75, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: Suggettion
+    voiceType: 4
+    audioClips:
+    - {fileID: 8300000, guid: 0269ee9f415188b4180eede3f5bea6ec, type: 3}
+    - {fileID: 8300000, guid: d7b72898921c5ff49b2616538d0b6326, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: AFKAlert
+    voiceType: 5
+    audioClips:
+    - {fileID: 8300000, guid: 65c0783551c415b44875f31f88548888, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: LoseDirection
+    voiceType: 6
+    audioClips:
+    - {fileID: 8300000, guid: 3c72d8582a59de14480d160ecfa5eff1, type: 3}
+    animationName: idle
+    layerIndex: 2
+    crossFadeDuration: 0.2
+    animationLength: 5
+  - name: EndTutorial
+    voiceType: 7
+    audioClips:
+    - {fileID: 8300000, guid: 605b8855b636bee4f803f6cf59a9ab02, type: 3}
+    animationName: idle
     layerIndex: 2
     crossFadeDuration: 0.2
     animationLength: 5
@@ -14841,8 +14943,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 955727082}
-  animalCtrl: {fileID: 0}
+  suggetionCounter: {fileID: 182389831}
+  animalCtrl: {fileID: 1877381569}
   imageEmoji: {fileID: 2106596897}
+  isTutorial: 0
 --- !u!135 &955727082
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15371,6 +15475,7 @@ Transform:
   - {fileID: 445041231}
   - {fileID: 1400691877}
   - {fileID: 1608292355}
+  - {fileID: 182389830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 86.714, z: 0}
 --- !u!114 &1004867522
@@ -18106,8 +18211,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 1281719064}
-  animalCtrl: {fileID: 0}
-  imageEmoji: {fileID: 0}
+  suggetionCounter: {fileID: 182389831}
+  animalCtrl: {fileID: 407154272}
+  imageEmoji: {fileID: 635847242}
+  isTutorial: 0
 --- !u!135 &1281719064
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18270,8 +18377,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 1308177431}
-  animalCtrl: {fileID: 0}
-  imageEmoji: {fileID: 0}
+  suggetionCounter: {fileID: 182389831}
+  animalCtrl: {fileID: 1010700914}
+  imageEmoji: {fileID: 85498559}
+  isTutorial: 0
 --- !u!135 &1308177431
 SphereCollider:
   m_ObjectHideFlags: 0
