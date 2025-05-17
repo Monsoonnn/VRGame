@@ -535,10 +535,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9043777310379465827, guid: 491f0ba879c0230449b5ddc0b78565c2, type: 3}
+      propertyPath: distance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6747790189108000732, guid: 491f0ba879c0230449b5ddc0b78565c2, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1232827171}
   m_SourcePrefab: {fileID: 100100000, guid: 491f0ba879c0230449b5ddc0b78565c2, type: 3}
 --- !u!1 &1058888867
 GameObject:
@@ -614,6 +621,29 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 8602176320806657143, guid: 491f0ba879c0230449b5ddc0b78565c2, type: 3}
   m_PrefabInstance: {fileID: 1032555378}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1232827165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6747790189108000732, guid: 491f0ba879c0230449b5ddc0b78565c2, type: 3}
+  m_PrefabInstance: {fileID: 1032555378}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1232827171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232827165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b023183069df224080314a560e6e1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
+  instanceId: 6b7476a5-034c-4d80-a352-3d247381adea
+  version: 1
+  installationRoutineCheckpoint:
+    _installationRoutineId: 
+    _installationVariants: []
 --- !u!1 &1432695704
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +751,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 50f924f12b200fe4e88edffcb9ac7b31, type: 3}
   m_Resource: {fileID: 8300000, guid: 50f924f12b200fe4e88edffcb9ac7b31, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0

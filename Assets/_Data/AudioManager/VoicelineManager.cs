@@ -28,6 +28,20 @@ namespace AudioManager {
             if (voicelines == null || voicelines.Length == 0) return null;
             return voicelines[Random.Range(0, voicelines.Length)];
         }
+
+
+        [ProButton]
+        public virtual void SetVolume(int newVolume) {
+
+            List<MetaXRAudioSource> audioManager = new List<MetaXRAudioSource>(
+             GameObject.FindObjectsByType<MetaXRAudioSource>(FindObjectsSortMode.None)
+             );
+
+            foreach (MetaXRAudioSource audioSource in audioManager) {
+                audioSource.GainBoostDb = newVolume;
+            }
+
+        }
     }
 
 }
