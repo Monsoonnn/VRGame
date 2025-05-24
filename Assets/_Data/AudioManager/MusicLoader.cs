@@ -2,7 +2,7 @@ using com.cyborgAssets.inspectorButtonPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MusicCtrl : NewMonobehavior {
+public class MusicLoader : NewMonobehavior {
 
     public AudioSource audioSource;
 

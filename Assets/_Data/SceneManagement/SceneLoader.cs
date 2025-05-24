@@ -51,13 +51,12 @@ namespace Systems.SceneManagement {
             progress.Progressed += target => targetProgress = Mathf.Max(target, targetProgress);
             
             EnableLoadingCanvas();
-            await manager.LoadScenes(sceneGroups[index], progress);
-
-            EnableLoadingCanvas(false);
-
             PlayerRespawn playerRespawn = GameObject.FindAnyObjectByType<PlayerRespawn>();
             if (playerRespawn) playerRespawn.Respawn();
 
+            await manager.LoadScenes(sceneGroups[index], progress);
+           
+            EnableLoadingCanvas(false);
 
         }
 

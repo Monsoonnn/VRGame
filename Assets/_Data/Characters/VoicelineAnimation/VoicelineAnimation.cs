@@ -24,15 +24,6 @@ public class VoicelineAnimation{
         
     }
 
-/*    private IEnumerator BackToIdle(float waitTime) {
-
-*//*        Debug.Log(waitTime);*//*
-
-        yield return new WaitForSeconds(waitTime);
-        animator.CrossFade("empty", crossFadeDuration, layerIndex);
-        animator.CrossFade("empty", crossFadeDuration, layerIndex + 1);
-        Debug.Log("Returned to Idle on base layer.");
-    }*/
 
     public async Task StartDialogue(AudioSource audioSource, Animator animator) {
 
