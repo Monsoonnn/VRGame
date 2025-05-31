@@ -7,12 +7,19 @@ namespace CountingCore {
 
         public GameObject corePrefab;
         public GameObject activeCorePrefab;
+        public Transform holder;
 
         protected override void LoadComponents() {
             base.LoadComponents();
             this.LoadCorePrefab();
+            this.LoadHolder();
         }
 
+        protected virtual void LoadHolder() {
+            if (holder != null) return;
+            this.holder = this.transform.Find("Holder");
+            Debug.Log(transform.name + ": LoadHolder: ", gameObject);
+        }
 
         protected virtual void LoadCorePrefab() {
             if (corePrefab != null) return;
@@ -22,25 +29,51 @@ namespace CountingCore {
 
         [ProButton]
         public virtual void StartGame() {
+            if (holder == null) return;
+
+            int childCount = holder.childCount;
+
+          
+            if (childCount == 1) {
+                Debug.LogWarning("Holder already has 1 child. Skipping spawn.");
+                return;
+            }
+
+            
+            if (childCount > 1) {
+                for (int i = holder.childCount - 1; i >= 1; i--) {
+                    Destroy(holder.GetChild(i).gameObject);
+                }
+            }
+
             if (activeCorePrefab != null) Destroy(activeCorePrefab);
             StartCoroutine(DelayedInstantiate());
         }
 
         [ProButton]
         public virtual void Restart() {
-            if (activeCorePrefab == null) return;
+            if (holder == null) return;
 
-            Destroy(activeCorePrefab);
-            StartGame();
+            
+            foreach (Transform child in holder) {
+                Destroy(child.gameObject);
+            }
+
+            activeCorePrefab = null;
+            StartCoroutine(DelayedInstantiate());
         }
 
         private IEnumerator DelayedInstantiate() {
-            yield return new WaitForSeconds(1f); // 1 second delay
+            yield return new WaitForSeconds(1f); // Delay 1s
 
-            GameObject newCore = Instantiate(corePrefab, this.transform);
+            if (holder.childCount == 1) {
+                Debug.LogWarning("Spawn canceled: holder already has 1 child.");
+                yield break;
+            }
+
+            GameObject newCore = Instantiate(corePrefab, holder);
             newCore.SetActive(true);
             activeCorePrefab = newCore;
         }
-
     }
 }
