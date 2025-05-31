@@ -1,6 +1,6 @@
 Dream Class - Trò chơi giáo dục thực tế ảo
 
-**Dream Class** là một trò chơi giáo dục sử dụng công nghệ thực tế ảo (VR), được phát triển bằng Unity và bộ công cụ Meta XR SDK. Trò chơi đưa người chơi vào một lớp học tương lai với thiết kế dạng Sci-Fi, nơi các em học sinh có thể học tập thông qua các hoạt động tương tác sinh động và thú vị.
+**Dream Class** là một trò chơi giáo dục sử dụng công nghệ thực tế ảo (VR), được phát triển bằng Unity và bộ công cụ Meta XR SDK. Trò chơi đưa người chơi vào một lớp học tương tác, nơi các em học sinh có thể học tập thông qua các hoạt động tương tác sinh động và thú vị.
 
 Mục tiêu
 
